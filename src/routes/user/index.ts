@@ -5,8 +5,10 @@ import {
   getUserSchema,
   updateUserSchema,
 } from "../../models/user.model";
+import authMiddleware from "../../middleware/auth";
 
 const userRoutes: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
+  fastify.addHook("preHandler", authMiddleware);
   const userController = new UserController(fastify.mysql);
 
   fastify.put("/", {

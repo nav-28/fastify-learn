@@ -11,7 +11,6 @@ export class UserRepository {
       [id],
     );
 
-    console.log(users[0]);
     return users[0] || null;
   }
 
