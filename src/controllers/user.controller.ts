@@ -14,8 +14,6 @@ export class UserController {
     request: FastifyRequest<{ Params: { userId: string } }>,
     reply: FastifyReply,
   ) {
-    console.log("auth");
-    console.log(request.auth);
     try {
       const user = await this.userRepository.findById(request.params.userId);
       if (!user) {

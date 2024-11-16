@@ -35,10 +35,10 @@ const authMiddleware: onRequestHookHandler = (request, reply, done) => {
     done();
   } catch (error) {
     if (error instanceof AuthError) {
-      // reply.code(401).send({
-      //   error: "Unauthorized",
-      //   message: error.message,
-      // });
+      reply.code(401).send({
+        error: "Unauthorized",
+        message: error.message,
+      });
     } else {
       reply.code(500).send({
         error: "Internal Server Error",
